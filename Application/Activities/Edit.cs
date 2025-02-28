@@ -14,10 +14,10 @@ namespace Application.Activities
 
         public class Handler : IRequestHandler<Command>
         {
-            private readonly DataContext _context;
+            private readonly AppDbContext _context;
             private readonly IMapper _mapper;
             
-            public Handler(DataContext context, IMapper mapper)
+            public Handler(AppDbContext context, IMapper mapper)
             {
                 _mapper = mapper;
                 _context = context;

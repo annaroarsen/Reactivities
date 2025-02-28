@@ -12,10 +12,10 @@ namespace Application.Activities
 
         public class Handler : IRequestHandler<Query, List<Activity>>
         {
-            private readonly DataContext _context;
+            private readonly AppDbContext _context;
         
 
-            public Handler(DataContext context)
+            public Handler(AppDbContext context)
             {
                 _context = context;
             }
