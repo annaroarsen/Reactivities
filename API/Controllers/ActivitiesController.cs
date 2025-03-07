@@ -10,6 +10,8 @@ namespace API.Controllers
     public class ActivitiesController : BaseApiController
     {
 
+        public ActivitiesController(IMediator mediator) : base(mediator) { }
+
         [HttpGet] //api/activities
 
         public async Task<ActionResult<List<Activity>>> GetActivities()
@@ -19,7 +21,7 @@ namespace API.Controllers
 
         [HttpGet("{id}")] //api/activities/Guid
         
-        public async Task<ActionResult<Activity>> GetActivity(Guid id)
+        public async Task<ActionResult<Activity>> GetActivity(string id)
         {
             return await Mediator.Send(new Details.Query{Id = id});
         }
@@ -41,7 +43,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id){
+        public async Task<IActionResult> Delete(string id){
 
             await Mediator.Send(new Delete.Command { Id = id });
 

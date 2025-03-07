@@ -9,7 +9,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
-            public Activity Activity {get; set;}
+            public required Activity Activity {get; set;}
         }
 
         public class Handler : IRequestHandler<Command>
