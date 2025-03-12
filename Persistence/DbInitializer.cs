@@ -2,15 +2,15 @@ using Domain;
 
 namespace Persistence
 {
-    public class Seed
+    public class DbInitializer
     {
         public static async Task SeedData(AppDbContext context)
         {
             if (context.Activities.Any()) return;
-            
+
             var activities = new List<Activity>
             {
-                new Activity
+              new()
                 {
                     Title = "Past Activity 1",
                     Date = DateTime.UtcNow.AddMonths(-2),
@@ -19,7 +19,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Pub",
                 },
-                new Activity
+                new()
                 {
                     Title = "Past Activity 2",
                     Date = DateTime.UtcNow.AddMonths(-1),
@@ -28,7 +28,7 @@ namespace Persistence
                     City = "Paris",
                     Venue = "Louvre",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 1",
                     Date = DateTime.UtcNow.AddMonths(1),
@@ -37,7 +37,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Natural History Museum",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 2",
                     Date = DateTime.UtcNow.AddMonths(2),
@@ -46,7 +46,7 @@ namespace Persistence
                     City = "London",
                     Venue = "O2 Arena",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 3",
                     Date = DateTime.UtcNow.AddMonths(3),
@@ -55,7 +55,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Another pub",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 4",
                     Date = DateTime.UtcNow.AddMonths(4),
@@ -64,7 +64,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Yet another pub",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 5",
                     Date = DateTime.UtcNow.AddMonths(5),
@@ -73,7 +73,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Just another pub",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 6",
                     Date = DateTime.UtcNow.AddMonths(6),
@@ -82,7 +82,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Roundhouse Camden",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 7",
                     Date = DateTime.UtcNow.AddMonths(7),
@@ -91,7 +91,7 @@ namespace Persistence
                     City = "London",
                     Venue = "Somewhere on the Thames",
                 },
-                new Activity
+                new()
                 {
                     Title = "Future Activity 8",
                     Date = DateTime.UtcNow.AddMonths(8),
@@ -99,10 +99,11 @@ namespace Persistence
                     Category = "film",
                     City = "London",
                     Venue = "Cinema",
-                }
+                }  
             };
 
-            await context.Activities.AddRangeAsync(activities);
+            context.Activities.AddRange(activities);
+
             await context.SaveChangesAsync();
         }
     }

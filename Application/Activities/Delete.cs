@@ -26,6 +26,11 @@ namespace Application.Activities
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
 
+                if (activity == null)
+                {
+                    throw new Exception("Activity not found");
+                }
+
                 _context.Remove(activity);
 
                 await _context.SaveChangesAsync();
