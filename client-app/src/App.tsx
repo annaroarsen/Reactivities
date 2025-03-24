@@ -8,9 +8,9 @@ function App() {
 
   useEffect(() => {
     axios.get('https://localhost:5001/api/activities')
-      .then(response => {
-        setActivities(response.data)
-    })
+      .then(response => 
+        setActivities(response.data))
+    return () => {}
   }, [])
 
   return (
