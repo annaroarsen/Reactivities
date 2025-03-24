@@ -3,7 +3,7 @@ import './App.css'
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
     axios.get('https://localhost:5001/api/activities')
