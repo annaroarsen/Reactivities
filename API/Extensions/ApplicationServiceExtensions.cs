@@ -26,7 +26,7 @@ namespace API.Extensions
                 });
             });
 
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetActivityList.Handler).Assembly));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);  
 
             return services;
