@@ -3,8 +3,8 @@ using Domain;
 using MediatR;
 using Persistence;
 
-namespace Application.Activities
-{
+namespace Application.Activities.Commands;
+
     public class EditActivity
     {
         public class Command : IRequest
@@ -12,26 +12,19 @@ namespace Application.Activities
             public required Activity Activity {get; set;}
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler(AppDbContext context, IMapper mapper) : IRequestHandler<Command>
         {
-            private readonly AppDbContext _context;
-            private readonly IMapper _mapper;
-            
-            public Handler(AppDbContext context, IMapper mapper)
-            {
-                _mapper = mapper;
-                _context = context;
-            }
 
             public async Task Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.Activities.FindAsync(request.Activity.Id);
+                var activity = await context.Activities
+                .FindAsync([request.Activity.Id], cancellationToken)
+                ?? throw new Exception("Cannot find activity");
 
-                _mapper.Map(request.Activity, activity);
+                mapper.Map(request.Activity, activity);
                 
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync(cancellationToken);
 
             }
         }
     }
-}
