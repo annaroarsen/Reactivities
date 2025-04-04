@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Container, CssBaseline } from '@mui/material';
+import { Box, Container, CssBaseline } from '@mui/material';
 import NavBar from './NavBar';
-import ActivityDashboard from '../../features/ActivityDashboard';
+import ActivityDashboard from '../../features/dashboard/ActivityDashboard';
 //import NavBar from 'NavBar.tsx';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <Box sx={{bgcolor: '#eeeeee'}}>
       <CssBaseline/>
       <NavBar/>
       <Container maxWidth='xl' sx={{mt: 3}}>
@@ -24,7 +24,7 @@ function App() {
 
       </Container>
       
-    </>  
+    </Box>  
   )
 }
 
