@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Box, Container, CssBaseline } from '@mui/material';
 import NavBar from './NavBar';
-import ActivityDashboard from '../../features/dashboard/ActivityDashboard';
+import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 //import NavBar from 'NavBar.tsx';
 
 function App() {
